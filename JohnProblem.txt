@@ -1,0 +1,41 @@
+#include <iostream>
+#include <vector>
+#include<cmath>
+
+using namespace std;
+
+#define N  41  //总人数
+#define M 3    //数到第几个人就自杀
+
+int main()
+{
+    vector<int> personlist(N, 0);
+    int  count = 1;
+    int index = 0;    //用于临时计计数
+    int pos = -1;    //用作位置标识符
+    int alive = 0;
+
+    while (count<=N)
+    {
+        do {
+            pos = (pos + 1) % N;
+            if (personlist[pos]==0)
+            {
+                index++;
+            }
+            if (index==M)
+            {
+                index = 0;
+                break;
+            }
+        } while (1);
+        personlist[pos] = count;
+        count++;
+    }
+
+    for (auto item = personlist.begin(); item != personlist.end();item++)
+    {
+        cout << *item << '\t';
+    }
+    return 0;
+}
